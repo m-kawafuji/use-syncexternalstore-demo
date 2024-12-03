@@ -1,7 +1,7 @@
 import { useCallback, useRef, useSyncExternalStore } from 'react';
 
 export default function useMediaQuery(mediaQueryString: string) {
-  const mediaQueryListRef = useRef<MediaQueryList | null>(null);
+  const mediaQueryListRef = useRef<MediaQueryList>();
 
   const subscribe = useCallback(
     (callback: () => void) => {
@@ -16,8 +16,7 @@ export default function useMediaQuery(mediaQueryString: string) {
 
   return useSyncExternalStore(
     subscribe,
-    () =>
-      mediaQueryListRef.current ? mediaQueryListRef.current.matches : undefined,
+    () => mediaQueryListRef.current && mediaQueryListRef.current.matches,
     () => undefined,
   );
 }
