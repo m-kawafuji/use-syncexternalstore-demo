@@ -6,7 +6,7 @@ export default function useMediaQuery(mediaQueryString: string) {
   const subscribe = useCallback(
     (callback: () => void) => {
       mediaQueryListRef.current = window.matchMedia(mediaQueryString);
-      mediaQueryListRef.current?.addEventListener('change', callback);
+      mediaQueryListRef.current.addEventListener('change', callback);
       return () => {
         mediaQueryListRef.current?.removeEventListener('change', callback);
       };
