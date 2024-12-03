@@ -17,7 +17,7 @@ export default function useMediaQuery(mediaQueryString: string) {
   return useSyncExternalStore(
     subscribe,
     () =>
-      mediaQueryListRef.current !== null && mediaQueryListRef.current.matches,
-    () => false,
+      mediaQueryListRef.current ? mediaQueryListRef.current.matches : undefined,
+    () => undefined,
   );
 }

@@ -9,11 +9,13 @@ export default function Home() {
   return (
     <main>
       <h1>useSyncExternalStore Demo</h1>
-      <p>
-        <code>
-          {mediaQueryString}: {JSON.stringify(matches)}
-        </code>
-      </p>
+      {matches !== undefined && (
+        <p>
+          <code>
+            {mediaQueryString}: {JSON.stringify(matches)}
+          </code>
+        </p>
+      )}
     </main>
   );
 }
